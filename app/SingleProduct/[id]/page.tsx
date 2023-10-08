@@ -5,9 +5,12 @@ import AddtoCart from '@/components/AddtoCart'
 import Footer from '@/components/Footer/Footer'
 import { Navbar } from '@/components/Export'
 import { FetchProductsType } from '@/Types/type'
+import { getBaseUrl } from '@/components/Categories'
 export default async function ProductOverviewOne({ params }: { params: { id: number } }) {
 
-  const data = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/SingleProduct/${params.id}`)
+
+  const url = getBaseUrl()
+  const data = await fetch(`${url}/api/SingleProduct/${params.id}`)
   const result = await data.json()
   const Item: FetchProductsType = result.data
 

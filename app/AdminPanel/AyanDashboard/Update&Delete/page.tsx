@@ -1,4 +1,5 @@
 import { FetchProductsType } from "@/Types/type";
+import { getBaseUrl } from "@/components/Categories";
 import SearchBox from "@/components/CompanySearch/SearchBox";
 import DeleteBtn from "@/components/DeleteBtn/DeleteBtn";
 import { Button } from "@/components/ui/button";
@@ -8,8 +9,8 @@ import Link from "next/link";
 export default async function UpdateAndDelete({searchParams}:{searchParams:{Search:string}}) {
   let result;
   if(searchParams.Search && searchParams.Search.length>1){
-    
-    const data = await  fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/AdminSearch/${searchParams.Search}`,{"cache":"no-cache"})
+    const url = getBaseUrl()
+    const data = await  fetch(`${url}/api/AdminSearch/${searchParams.Search}`,{"cache":"no-cache"})
      result = await data.json();
     
   }

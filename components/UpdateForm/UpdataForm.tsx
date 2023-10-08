@@ -1,12 +1,14 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { getBaseUrl } from '../Categories';
 
 export default function ProductUpdateForm({ productId }:{productId:number}) {
     
     const fetchProductDetails = async () => {
         try {
-          const data = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/SingleProduct/${productId}`);
+          const url = getBaseUrl()
+          const data = await fetch(`${url}/api/SingleProduct/${productId}`);
           const result = await data.json();
           const productData = result.data; // Assuming this object contains the product details
     

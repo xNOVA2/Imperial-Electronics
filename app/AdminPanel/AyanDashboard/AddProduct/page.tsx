@@ -1,4 +1,5 @@
 'use client'
+import { getBaseUrl } from "@/components/Categories";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useState } from "react";
@@ -30,8 +31,9 @@ export default function AddProduct() {
       const handleSubmit = async (e:any) => {
         e.preventDefault();
       
+        const url = getBaseUrl()
     try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/AddProduct`, {
+        const response = await fetch(`${url}/api/AddProduct`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

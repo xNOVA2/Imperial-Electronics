@@ -1,8 +1,10 @@
+import { getBaseUrl } from "@/components/Categories";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export default async function page() {
-  const data = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/GetOrderInfo`, { next: { revalidate: 0 } });
+  const Url = getBaseUrl()
+  const data = await fetch(`${Url}/api/GetOrderInfo`, { next: { revalidate: 0 } });
   const result = await data.json();
   console.log(result);
 
