@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { useAuth } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import { getBaseUrl } from '@/components/Categories';
 
 interface OrderType {
   name:string
@@ -28,6 +29,7 @@ export default function CheckOut() {
 
   const user = useAuth()
   const router = useRouter()
+  const [Text, setText] = useState('')
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -96,8 +98,8 @@ export default function CheckOut() {
       ShippingAddressSchema.parse(addressInfo);
 
       
-      
-      const apiUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/Order`;
+      const url = getBaseUrl()
+      const apiUrl = `${url}/api/Order`;
 
       const orderData:OrderType = {
         name: formData.name,
@@ -130,6 +132,7 @@ export default function CheckOut() {
         } else {
           // Handle the successful response (e.g., show a success message)
           console.log('Order placed successfully.');
+          setText("Order placed successfully.")
         }
       } catch (error) {
         // Handle any network or fetch-related errors
@@ -443,6 +446,7 @@ export default function CheckOut() {
             </div>
           </div>
         </div>
+        <p className='text-red-400 pt-2 text-2xl font-bold flex justify-center'>{Text}</p>
         </div>
     </>
   );

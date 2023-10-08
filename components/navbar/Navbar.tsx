@@ -30,7 +30,7 @@ export default function Navbar() {
         </div>
         {/* Logo */}
         <div>
-          <Image className="cursor-pointer" src={'/AnimateLogo.gif'} alt="Logo" width={140} height={100} onClick={() => router.push('/')} />
+          <Image className="cursor-pointer" src={'/AnimateLogo.gif'} alt="Logo" width={70} height={70} onClick={() => router.push('/')} />
         </div>
 
         {/* Search component */}
@@ -57,7 +57,7 @@ export default function Navbar() {
           ) : (
             // Display a link to sign-up when no user is logged in
             <Link href={'/sign-up'} >
-              <Button variant={"outline"} >Create Account</Button>
+              <Button variant={"outline"} className='text-xs '>Sign-in</Button>
             </Link>
           )}
         </div>
