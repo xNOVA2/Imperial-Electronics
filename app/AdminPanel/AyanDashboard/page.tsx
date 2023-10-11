@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export default async function page() {
-  const Url = getBaseUrl()
-  const data = await fetch(`${Url}/api/GetOrderInfo`, { cache: "no-cache" });
+  const urll = getBaseUrl()
+  const data = await fetch(`${urll}/api/GetOrderInfo`, { cache: "no-cache" });
   const result = await data.json();
 
   return (
