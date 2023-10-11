@@ -10,7 +10,9 @@ export default async function UpdateAndDelete({searchParams}:{searchParams:{Sear
   let result;
   if(searchParams.Search && searchParams.Search.length>1){
     const url = getBaseUrl()
-    const data = await  fetch(`${url}/api/AdminSearch/${searchParams.Search}`,{"cache":"no-cache"})
+    const DecodeSearch = encodeURIComponent(searchParams.Search)
+
+    const data = await  fetch(`${url}/api/AdminSearch/${DecodeSearch}`,{"cache":"no-cache"})
      result = await data.json();
     
   }

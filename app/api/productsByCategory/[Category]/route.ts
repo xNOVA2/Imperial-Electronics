@@ -9,7 +9,7 @@ export  async function GET(request:Request,{params}:{params:{Category:string}}){
         let Brand = searchParams.get('Brand')
         let Series = searchParams.get('Series')
         
-       
+
             data = await prisma.post.findMany({where:{ItemType:params.Category}})
         
             if(PriceRange){
@@ -22,11 +22,11 @@ export  async function GET(request:Request,{params}:{params:{Category:string}}){
                 data = data.filter((item)=>item.Series==Series)
             }
         
-        if(data){
+      
             return NextResponse.json({data})
-        }
+       
 
-        return NextResponse.json({message:"No data found"})
+   
     } catch (error) {
         return NextResponse.json({error:error})
     }

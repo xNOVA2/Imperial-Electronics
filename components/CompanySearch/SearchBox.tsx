@@ -28,7 +28,7 @@ export default function SearchBox() {
       clearTimeout(delayTimer);
     }
 
-    if (Text) {
+    if (Text.length > 1) {
       // Set a new timeout to update the query parameter after a delay
       delayTimer = setTimeout(() => {
         

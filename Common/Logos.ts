@@ -14,6 +14,8 @@ import PHILIPS from '../public/PHILIPS.png';
 import BRAUN from '../public/BRAUN.png';
 import PEL from '../public/Pel.png'
 import multynet from '../public/multynet.png'
+import RAF from '../public/raf.png'
+import National from '../public/National.wine.png'
 export const logos = [
   { src: Haier, alt: "Haier Logo", href: "/CompanyProduct/HAIER" },
   { src: Dawlance, alt: "Dawlance Logo", href: "/CompanyProduct/DAWLANCE" },
@@ -31,5 +33,7 @@ export const logos = [
   { src: BRAUN, alt: "BRAUN Logo", href: "/CompanyProduct/BRAUN" },
   { src: multynet, alt: "multynet Logo", href: "/CompanyProduct/Multynet" },
   { src: PEL, alt: "PEL Logo", href: "/CompanyProduct/PEL" },
+  { src: RAF, alt: "RAF Logo", href: "/CompanyProduct/RAF" },
+  { src: National, alt: "National Logo", href: "/CompanyProduct/National" },
 
 ];

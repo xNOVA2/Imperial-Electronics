@@ -20,9 +20,21 @@ export default  async function page({params,searchParams}:{params:{Company:strin
   }
   const queryString = new URLSearchParams(queryParams as any).toString();
   const url = getBaseUrl();
+let data;
+let result;
+const DecodeSearch = encodeURIComponent(searchParams.Search)
 
-  const data = await fetch(`${url}/api/productsByCompany/${Company}?${queryString}`)
-  const result = await data.json();
+  if(searchParams.Search){
+     data = await  fetch(`${url}/api/AdminSearch/${DecodeSearch}`,{next:{revalidate:3600}})
+    result = await data.json();
+  }
+  else{
+     data = await fetch(`${url}/api/productsByCompany/${Company}?${queryString}`,{next:{revalidate:3600}})
+     result = await data.json();
+  }
+ 
+  
+  
   return (
     <>
     <Navbar/>

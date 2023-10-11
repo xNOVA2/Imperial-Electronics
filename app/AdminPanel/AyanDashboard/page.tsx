@@ -4,9 +4,8 @@ import Link from "next/link";
 
 export default async function page() {
   const Url = getBaseUrl()
-  const data = await fetch(`${Url}/api/GetOrderInfo`, { next: { revalidate: 0 } });
+  const data = await fetch(`${Url}/api/GetOrderInfo`, { cache: "no-cache" });
   const result = await data.json();
-  console.log(result);
 
   return (
     <div>

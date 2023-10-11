@@ -1,11 +1,13 @@
 'use client'
+import { getBaseUrl } from "../Categories";
 import { Button } from "../ui/button";
 
 export default function DeleteBtn({ id }: { id: number }) {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/DeleteProduct/${id}`, {
+      const url = getBaseUrl();
+      const response = await fetch(`${url}/api/DeleteProduct/${id}`, {
         method: "DELETE", // Assuming DELETE is the correct HTTP method for deletion
  
       });
