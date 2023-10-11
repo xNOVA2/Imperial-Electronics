@@ -1,4 +1,4 @@
-export const revalidate = 1;
+'use client'
 import { getBaseUrl } from "@/components/Categories";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
