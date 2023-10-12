@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default async function page() {
   const urll = getBaseUrl()
-  const data = await fetch(`${urll}/api/GetOrders`,{next:{revalidate:1}});
+  const data = await fetch(`${urll}/api/Order`,{"cache":"no-store"});
   const result = await data.json();
 
   
