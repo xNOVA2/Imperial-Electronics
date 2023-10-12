@@ -1,10 +1,12 @@
+export const dynamic = "force-dynamic";
+
 import { getBaseUrl } from "@/components/Categories";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export default async function page() {
   const urll = getBaseUrl()
-  const data = await fetch(`${urll}/api/GetOrderInfo`,{cache:"no-store"});
+  const data = await fetch(`${urll}/api/GetOrderInfo`,{next:{revalidate:3600}});
   const result = await data.json();
 
   return (
