@@ -12,11 +12,12 @@ export async function GET(request: Request) {
       },
     });
 
+    
     if (orders) {
       return NextResponse.json({ data: orders });
     }
 
-    return NextResponse.json({ message: "No Order" });
+    return NextResponse.json({ data: orders }, { headers: { "Cache-Control": "no-store" } });
   } catch (error) {
     return NextResponse.json({ message: error });
   }
