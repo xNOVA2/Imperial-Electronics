@@ -1,15 +1,15 @@
 
 
-import axios from 'axios'
 import { getBaseUrl } from "@/components/Categories";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export default async function page() {
   const urll = getBaseUrl()
-  const data = await axios.get(`${urll}/api/GetOrders`);
+  const data = await fetch(`${urll}/api/GetOrders`,{cache:"no-store"});
+  const result = await data.json();
 
-
+  
   return (
     <div>
       <nav className="flex justify-between px-4 items-center">
@@ -32,7 +32,7 @@ export default async function page() {
       <div className="flex justify-center">
         <h1 className="text-4xl font-bold">Orders</h1>
       </div>
-      {data?.data?.data.slice().reverse().map((order:any, index:number) => (
+      {result?.data?.data.slice().reverse().map((order:any, index:number) => (
         <div key={index} className="p-5">
           <p>{`Order by ${order.Name}`}</p>
           <br />
