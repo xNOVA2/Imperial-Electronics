@@ -8,9 +8,10 @@ export default function OrderPage() {
   const [orders, setOrders] = useState([]); // State to hold fetched orders
 
   useEffect(() => {
-    router.refresh()
+    console.log(orders);
+
     fetchData();
-  }, []);
+  }, [orders]);
 
   const fetchData = async () => {
     try {
