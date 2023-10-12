@@ -14,10 +14,10 @@ export async function GET(request: Request) {
 
     
     if (orders) {
-      return NextResponse.json({ data: orders });
+      return NextResponse.json({ data: orders }, { headers: { "Cache-Control": "no-store" } });
     }
 
-    return NextResponse.json({ data: orders }, { headers: { "Cache-Control": "no-store" } });
+    return NextResponse.json({ message: "No Order" });
   } catch (error) {
     return NextResponse.json({ message: error });
   }
