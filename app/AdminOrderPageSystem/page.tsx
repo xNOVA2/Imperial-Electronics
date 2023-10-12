@@ -16,6 +16,8 @@ export default function OrderPage() {
     try {
       const response = await axios.get("/api/GetOrders");
       setOrders(response.data.data); // Update the state with fetched data
+      console.log(orders);
+      
     } catch (error) {
       console.error("Error fetching data:", error);
     }
