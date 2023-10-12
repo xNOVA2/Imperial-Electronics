@@ -1,13 +1,19 @@
-export const dynamic = "force-dynamic";
-
-import { getBaseUrl } from "@/components/Categories";
+'use client'
 import { Button } from "@/components/ui/button";
+import axios from "axios";
 import Link from "next/link";
-
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 export default async function page() {
-    const urll = getBaseUrl()
-    const data = await fetch(`${urll}/api/GetOrders`,{next:{revalidate:0}});
-    const result = await data.json();
+    const router = useRouter()
+    useEffect(() => {
+        router.refresh()
+    
+     
+    }, [])
+    
+    const data = await axios.get(`api/GetOrders`,);
+
   return (
     <div>
     <nav className="flex justify-between px-4 items-center">
@@ -30,7 +36,7 @@ export default async function page() {
     <div className="flex justify-center">
       <h1 className="text-4xl font-bold">Orders</h1>
     </div>
-    {result.data.slice().reverse().map((order:any, index:number) => (
+    {data.data.data.slice().reverse().map((order:any, index:number) => (
       <div key={index} className="p-5">
         <p>{`Order by ${order.Name}`}</p>
         <br />
