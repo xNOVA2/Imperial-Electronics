@@ -4,10 +4,10 @@ import { Button } from '@/components/ui/button';
 import { getBaseUrl } from '../Categories';
 
 export default function ProductUpdateForm({ productId }:{productId:number}) {
-    
+  const url = getBaseUrl()
+
     const fetchProductDetails = async () => {
         try {
-          const url = getBaseUrl()
           const data = await fetch(`${url}/api/SingleProduct/${productId}`);
           const result = await data.json();
           const productData = result.data; // Assuming this object contains the product details
@@ -63,7 +63,7 @@ export default function ProductUpdateForm({ productId }:{productId:number}) {
     e.preventDefault();
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/updateProduct/${productId}`, {
+      const response = await fetch(`${url}/api/updateProduct/${productId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

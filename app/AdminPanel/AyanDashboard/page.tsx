@@ -1,11 +1,10 @@
-'use client'
 import { getBaseUrl } from "@/components/Categories";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export default async function page() {
   const urll = getBaseUrl()
-  const data = await fetch(`${urll}/api/GetOrderInfo`,);
+  const data = await fetch(`${urll}/api/GetOrderInfo`,{cache:"no-store"});
   const result = await data.json();
 
   return (

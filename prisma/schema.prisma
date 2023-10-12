@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,45 +8,43 @@ datasource db {
 }
 
 model Post {
-  id        Int     @id @unique @default(autoincrement())
-  ModelNo     String
-  CompanyName   String
-  ItemType   String
-  Price   Int
-ItemDescription String
-Type String?
-Series String
-Size String?
-Color String?
-ProductUrl String
-Extra String?
+  id              Int     @id  @default(autoincrement())
+  Price           Int
+  Type            String?
+  Series          String
+  Size            String?
+  Color           String?
+  Extra           String?
+  CompanyName     String
+  ItemDescription String
+  ItemType        String
+  ModelNo         String
+  ProductUrl      String
 }
 
 model Coupon {
-  id        Int     @id @unique @default(autoincrement())
-  Code String
+  id       Int    @id  @default(autoincrement())
+  Code     String
   GiftItem String
 }
 
-model Order{
- id        Int     @id  @unique @default(autoincrement())
- Name String
- Email String
- PhoneNumber String
- Address String
- City String
- RiderNote String?
- orderItems  OrderItem[]
- totalPrice Int
- postalCode String
+model Order {
+  id          Int         @id  @default(autoincrement())
+  Name        String
+  Email       String
+  PhoneNumber String
+  Address     String
+  City        String
+  RiderNote   String?
+  totalPrice  Int
+  postalCode  String
+  orderItems  OrderItem[]
 }
 
-
 model OrderItem {
-  id         Int      @id @unique @default(autoincrement())
-  modelNumber    String
-  company    String
-
-  order      Order    @relation(fields: [orderId], references: [id])
-  orderId    Int
+  id          Int    @id  @default(autoincrement())
+  company     String
+  orderId     Int
+  modelNumber String
+  order       Order  @relation(fields: [orderId], references: [id])
 }

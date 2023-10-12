@@ -6,7 +6,7 @@ import { useState } from "react";
 
 export default function AddProduct() {
   let data;
-
+const [Text, setText] = useState('')
     const [formData, setFormData] = useState({
         Price: '',
         Type: '',
@@ -35,17 +35,16 @@ export default function AddProduct() {
     try {
         const response = await fetch(`${url}/api/AddProduct`, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
+
           body: JSON.stringify(formData),
         });
         if (response.ok) {
            data = await response.json();
            console.log(data);
-           
+           setText("Product Added")
         } else {
           console.error('Failed to add product');
+          setText("Failed to add product")
         }
       } catch (error) {
         console.error('An error occurred while adding the product', error);
@@ -200,7 +199,7 @@ export default function AddProduct() {
         </Button>
       </div>
     </form>
-    <p>{data}</p>
+    <p className="flex justify-start text-center">{Text}</p>
     </div>
   )
 }
