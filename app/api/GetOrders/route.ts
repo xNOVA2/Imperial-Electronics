@@ -1,11 +1,7 @@
 import { NextResponse } from "next/server";
 import prisma from "@/prisma/connection/connection";
 
-export async function getInitialProps() {
-  return {
-    dynamic: true,
-  };
-}
+
 
 
 export async function GET(request: Request) {
