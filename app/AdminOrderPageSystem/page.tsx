@@ -12,7 +12,7 @@ export default async function page() {
     <div>
     <nav className="flex justify-between px-4 items-center">
       <h1 className="text-2xl font-bold">
-        <Link href={'/AdminPanel/AyanDashboard'}>Admin Dashboard </Link>
+        <Link href={'/AdminPanel/AyanDashboard'}>Admin Dashboard</Link>
       </h1>
       <ul className="flex justify-items-center m-3 gap-4">
         <li>
