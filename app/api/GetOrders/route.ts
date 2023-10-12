@@ -4,6 +4,7 @@ import prisma from "@/prisma/connection/connection";
 export async function GET(request:Request){
     try {
         const orders = await prisma.order.findMany({
+          
             include: {
               orderItems: true, 
             },

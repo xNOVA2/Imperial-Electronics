@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default async function page() {
   const urll = getBaseUrl()
-  const data = await axios.get(`${urll}/api/GetOrderInfo`);
+  const data = await axios.get(`${urll}/api/GetOrders`);
 
 
   return (
