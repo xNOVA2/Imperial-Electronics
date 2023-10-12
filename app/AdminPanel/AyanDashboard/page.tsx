@@ -1,13 +1,14 @@
-export const dynamic = "force-dynamic";
 
+
+import axios from 'axios'
 import { getBaseUrl } from "@/components/Categories";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export default async function page() {
   const urll = getBaseUrl()
-  const data = await fetch(`${urll}/api/GetOrderInfo`,{next:{revalidate:3600}});
-  const result = await data.json();
+  const data = await axios.get(`${urll}/api/GetOrderInfo`);
+
 
   return (
     <div>
@@ -31,7 +32,7 @@ export default async function page() {
       <div className="flex justify-center">
         <h1 className="text-4xl font-bold">Orders</h1>
       </div>
-      {result.data.slice().reverse().map((order:any, index:number) => (
+      {data?.data?.data.slice().reverse().map((order:any, index:number) => (
         <div key={index} className="p-5">
           <p>{`Order by ${order.Name}`}</p>
           <br />
