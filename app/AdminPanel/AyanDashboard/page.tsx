@@ -32,7 +32,7 @@ export default async function page() {
       <div className="flex justify-center">
         <h1 className="text-4xl font-bold">Orders</h1>
       </div>
-      {result?.data?.data.slice().reverse().map((order:any, index:number) => (
+      {result?.data?.slice().reverse().map((order:any, index:number) => (
         <div key={index} className="p-5">
           <p>{`Order by ${order.Name}`}</p>
           <br />
