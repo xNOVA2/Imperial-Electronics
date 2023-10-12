@@ -4,7 +4,7 @@ import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-export default async function page() {
+export default async function OrderPage() {
     const router = useRouter()
     useEffect(() => {
         router.refresh()
