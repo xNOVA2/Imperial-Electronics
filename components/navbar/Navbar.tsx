@@ -30,7 +30,7 @@ export default function Navbar() {
         </div>
         {/* Logo */}
         <div>
-          <Image className="cursor-pointer" src={'/AnimateLogo.gif'} alt="Logo" width={70} height={70} onClick={() => router.push('/')} />
+          <Image className="cursor-pointer" src={'/AnimateLogo.gif'} alt="Logo" width={140} height={140} onClick={() => router.push('/')} />
         </div>
 
         {/* Search component */}

@@ -6,7 +6,7 @@ const products = [
   {
     id: 1,
     title: ' REFRIGERATOR',
-    image: 'https://i.shgcdn.com/ed5a01bd-3348-4a10-a043-c79e17c9dc8a/-/format/auto/-/preview/3000x3000/-/quality/lighter/',
+    image: 'https://cdn.discordapp.com/attachments/1150525717730304101/1162724612673634304/images_15.png?ex=653cfaae&is=652a85ae&hm=94e054ed10c6437ac9ca197c8c9cc17903e904e9411e5d68cf7a946c42209928&',
     link:"/Products/REFRIGERATOR"
   },
   {
