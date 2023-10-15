@@ -35,11 +35,13 @@ export default async function page() {
       {result?.data?.slice().reverse().map((order:any, index:number) => (
         <div key={index} className="p-5">
           <p>{`Order by ${order.Name}`}</p>
+          <p>Email Address {order.Email}</p>
           <br />
           <p>{`Address: ${order.Address}`}</p>
           <br />
           <p>{`Phone Number: ${order.PhoneNumber}`}</p>
-
+          <p>City: {order.City}</p>
+          <p>Postal Code:  {order.postalCode}</p>
           {/* Display items purchased */}
           <div>
             <h2 className="text-2xl font-semibold mt-4">Items Purchased:</h2>

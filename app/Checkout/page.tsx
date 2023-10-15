@@ -11,19 +11,19 @@ import Image from 'next/image';
 import { getBaseUrl } from '@/components/Categories';
 
 interface OrderType {
-  name:string
-  email:string
-  address:string 
-  phone:string 
-  postalCode:string 
-  city:string
-  totalPrice:number
-  orderItems:orderCartType[]
+  name: string
+  email: string
+  address: string
+  phone: string
+  postalCode: string
+  city: string
+  totalPrice: number
+  orderItems: orderCartType[]
 }
 
-interface orderCartType{
-    company:string
-    modelNumber:string
+interface orderCartType {
+  company: string
+  modelNumber: string
 }
 export default function CheckOut() {
 
@@ -51,6 +51,7 @@ export default function CheckOut() {
   });
 
   const cart = useStore((state) => state.Cart);
+  const [loading, setLoading] = useState(false)
   const RemoveItem = useStore((state) => state.RemoveAnItem);
 
   const calculateTotalPrice = (): number => {
@@ -76,7 +77,7 @@ export default function CheckOut() {
   });
 
   const handleFormSubmit = async () => {
-    if(!user.isSignedIn){
+    if (!user.isSignedIn) {
       router.push('/sign-up')
       return
     }
@@ -97,11 +98,11 @@ export default function CheckOut() {
       ContactInfoSchema.parse(contactInfo);
       ShippingAddressSchema.parse(addressInfo);
 
-      
+      setLoading(true);
       const url = getBaseUrl()
       const apiUrl = `${url}/api/Order`;
 
-      const orderData:OrderType = {
+      const orderData: OrderType = {
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
@@ -113,19 +114,19 @@ export default function CheckOut() {
           company: cartItem.company,
           modelNumber: cartItem.modelNumber,
         })),
-        
+
       };
-      
+
       const requestOptions = {
         method: 'POST',
         body: JSON.stringify(orderData), // Convert the data to JSON format
       };
-      
+
       try {
         // Make the POST request to the API
         const response = await fetch(apiUrl, requestOptions);
         console.log(response.json());
-        
+
         if (!response.ok) {
           // Handle non-successful response (e.g., show an error message)
           console.error('Failed to place the order.');
@@ -139,13 +140,16 @@ export default function CheckOut() {
         console.error('An error occurred while placing the order:', error);
       }
       // Handle successful form submission here
-    } catch (error:any) {
+    } catch (error: any) {
       // Handle validation errors and update the errors state
       setErrors(error.formErrors.fieldErrors);
     }
+    setLoading(false);
+    
+   
   };
- 
-  
+
+
   return cart.length === 0 ? (
     <EmptyCart />
   ) : (
@@ -177,11 +181,9 @@ export default function CheckOut() {
                               Full Name
                             </label>
                             <input
-                              className={`flex h-10 w-full rounded-md border ${
-                                errors.name ? 'border-red-500' : 'border-black/30'
-                              } bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 ${
-                                errors.name ? 'ring-red-500' : ''
-                              } disabled:cursor-not-allowed disabled:opacity-50`}
+                              className={`flex h-10 w-full rounded-md border ${errors.name ? 'border-red-500' : 'border-black/30'
+                                } bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 ${errors.name ? 'ring-red-500' : ''
+                                } disabled:cursor-not-allowed disabled:opacity-50`}
                               type="text"
                               placeholder="Enter your name"
                               id="name"
@@ -201,11 +203,9 @@ export default function CheckOut() {
                               Email Address
                             </label>
                             <input
-                              className={`flex h-10 w-full rounded-md border ${
-                                errors.email ? 'border-red-500' : 'border-black/30'
-                              } bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 ${
-                                errors.email ? 'ring-red-500' : ''
-                              } disabled:cursor-not-allowed disabled:opacity-50`}
+                              className={`flex h-10 w-full rounded-md border ${errors.email ? 'border-red-500' : 'border-black/30'
+                                } bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 ${errors.email ? 'ring-red-500' : ''
+                                } disabled:cursor-not-allowed disabled:opacity-50`}
                               type="email"
                               placeholder="Enter your Email"
                               id="email"
@@ -225,11 +225,9 @@ export default function CheckOut() {
                               Phone Number
                             </label>
                             <input
-                              className={`flex h-10 w-full rounded-md border ${
-                                errors.phone ? 'border-red-500' : 'border-black/30'
-                              } bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 ${
-                                errors.phone ? 'ring-red-500' : ''
-                              } disabled:cursor-not-allowed disabled:opacity-50`}
+                              className={`flex h-10 w-full rounded-md border ${errors.phone ? 'border-red-500' : 'border-black/30'
+                                } bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 ${errors.phone ? 'ring-red-500' : ''
+                                } disabled:cursor-not-allowed disabled:opacity-50`}
                               type="email"
                               placeholder="Enter your Phone Number"
                               id="phone"
@@ -260,11 +258,9 @@ export default function CheckOut() {
                                 id="address"
                                 name="address"
                                 autoComplete="street-address"
-                                className={`flex h-10 w-full rounded-md border ${
-                                  errors.address ? 'border-red-500' : 'border-black/30'
-                                } bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 ${
-                                  errors.address ? 'ring-red-500' : ''
-                                } disabled:cursor-not-allowed disabled:opacity-50`}
+                                className={`flex h-10 w-full rounded-md border ${errors.address ? 'border-red-500' : 'border-black/30'
+                                  } bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 ${errors.address ? 'ring-red-500' : ''
+                                  } disabled:cursor-not-allowed disabled:opacity-50`}
                                 onBlur={(e) => {
                                   setFormData({ ...formData, address: e.target.value });
                                 }}
@@ -287,11 +283,9 @@ export default function CheckOut() {
                                 id="city"
                                 name="city"
                                 autoComplete="address-level2"
-                                className={`flex h-10 w-full rounded-md border ${
-                                  errors.city ? 'border-red-500' : 'border-black/30'
-                                } bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 ${
-                                  errors.city ? 'ring-red-500' : ''
-                                } disabled:cursor-not-allowed disabled:opacity-50`}
+                                className={`flex h-10 w-full rounded-md border ${errors.city ? 'border-red-500' : 'border-black/30'
+                                  } bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 ${errors.city ? 'ring-red-500' : ''
+                                  } disabled:cursor-not-allowed disabled:opacity-50`}
                                 onBlur={(e) => {
                                   setFormData({ ...formData, city: e.target.value });
                                 }}
@@ -314,11 +308,9 @@ export default function CheckOut() {
                                 id="region"
                                 name="region"
                                 autoComplete="address-level1"
-                                className={`flex h-10 w-full rounded-md border ${
-                                  errors.region ? 'border-red-500' : 'border-black/30'
-                                } bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 ${
-                                  errors.region ? 'ring-red-500' : ''
-                                } disabled:cursor-not-allowed disabled:opacity-50`}
+                                className={`flex h-10 w-full rounded-md border ${errors.region ? 'border-red-500' : 'border-black/30'
+                                  } bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 ${errors.region ? 'ring-red-500' : ''
+                                  } disabled:cursor-not-allowed disabled:opacity-50`}
                                 onBlur={(e) => {
                                   setFormData({ ...formData, region: e.target.value });
                                 }}
@@ -341,11 +333,9 @@ export default function CheckOut() {
                                 id="postal-code"
                                 name="postal-code"
                                 autoComplete="postal-code"
-                                className={`flex h-10 w-full rounded-md border ${
-                                  errors.postalCode ? 'border-red-500' : 'border-black/30'
-                                } bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 ${
-                                  errors.postalCode ? 'ring-red-500' : ''
-                                } disabled:cursor-not-allowed disabled:opacity-50`}
+                                className={`flex h-10 w-full rounded-md border ${errors.postalCode ? 'border-red-500' : 'border-black/30'
+                                  } bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 ${errors.postalCode ? 'ring-red-500' : ''
+                                  } disabled:cursor-not-allowed disabled:opacity-50`}
                                 onBlur={(e) => {
                                   setFormData({ ...formData, postalCode: e.target.value });
                                 }}
@@ -358,21 +348,26 @@ export default function CheckOut() {
                         </div>
                       </div>
                       <div className="mt-10 flex justify-end border-t border-gray-200 pt-6">
-                        <button
-                          type="button"
-                          className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                          onClick={handleFormSubmit}
-                        >
-                          Check Out
-                          
-                        </button>
-                       
+                        {loading ? (
+                          <Button type="button" className="bg-black ..." disabled>
+                            <div className="inline-block h-6 w-6 animate-spin rounded-full border-2 border-solid border-current border-r-transparent align-middle motion-safe:animate-spin-slow" role="status"></div>
+                            Processing...
+                          </Button>
+                        ) : (
+                          <Button
+                            type="button"
+                            className={`flex rounded-md bg-black text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black ${loading ? 'loading' : ''}`}
+                            onClick={handleFormSubmit}
+                          >
+                            Check Out
+                          </Button>
+                        )}
 
 
                       </div>
-              </form>
+                    </form>
 
-                    </div>
+                  </div>
 
                 </div>
               </div>
@@ -386,8 +381,8 @@ export default function CheckOut() {
                       <div className="flex flex-1 items-stretch">
                         <div className="flex-shrink-0">
                           <Image
-                          width={300}
-                          height={200}
+                            width={300}
+                            height={200}
                             className="h-20 w-20 rounded-lg border border-gray-200 bg-white object-contain"
                             src={product.image}
                             alt={''}
@@ -428,12 +423,14 @@ export default function CheckOut() {
                     />
                   </div>
                   <div className="mt-4 sm:mt-0 md:mt-4 lg:mt-0">
+
                     <button
                       type="button"
                       className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                     >
                       Apply Coupon
                     </button>
+
                   </div>
                 </div>
               </form>
@@ -447,7 +444,7 @@ export default function CheckOut() {
           </div>
         </div>
         <p className='text-red-400 pt-2 text-2xl font-bold flex justify-center'>{Text}</p>
-        </div>
+      </div>
     </>
   );
 }

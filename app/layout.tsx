@@ -5,7 +5,8 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Imperial Electronic',
-  description: 'Best Place to Buy your Home and Kitchen Appliances'
+  description: 'Best Place to Buy your Home and Kitchen Appliances',
+
 }
 
 export default function RootLayout({
