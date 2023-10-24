@@ -34,22 +34,22 @@ export const products = [
       title: "LED",
       description: "Explore our top-quality LEDs for home and business, offering superior brightness and energy savings. Illuminate your world with us!",
       price: 150000,
-      image1: "https://modernelectronics.pk/wp-content/uploads/2021/10/W020191213643389102580_350-1-4.png",
-      image2: "https://modernelectronics.pk/wp-content/uploads/2021/10/W020200914521824048559_450.jpg"
+      image1: "https://modernelectronics.pk/cdn/shop/files/W020220427548992009362_350.png?v=1696927690&width=350",
+      image2: "https://modernelectronics.pk/cdn/shop/files/W020220521757629777447.jpg?v=1696927194&width=700"
     },
     {
       title: "REFRIGERATOR",
       description: "Experience freshness redefined with our innovative fridges. Perfect for any kitchen, they keep your food at its best. Explore our selection today!",
       price: 60000,
       image1: "https://yasirelectronics.com/wp-content/uploads/2023/06/ad.jpg",
-      image2: "https://modernelectronics.pk/wp-content/uploads/2021/08/2BAD0616-2D9C-47F5-8399-ABEC84FA4D65-600x600.jpeg"
+      image2: "https://cdn.discordapp.com/attachments/1150525717730304101/1162724612673634304/images_15.png?ex=653cfaae&is=652a85ae&hm=94e054ed10c6437ac9ca197c8c9cc17903e904e9411e5d68cf7a946c42209928&"
     },
     {
       title: "MICROWAVE-OVEN",
       description: "Discover culinary perfection with our ovens. Elevate your cooking with precision and style. Explore our range today!",
       price: 40000,
       image1: "https://yasirelectronics.com/wp-content/uploads/2022/12/adadadead.jpg",
-      image2: "https://modernelectronics.pk/wp-content/uploads/2021/08/Dawlance-Microwave-DW393-GSS-600x600.jpg"
+      image2: "https://modernelectronics.pk/cdn/shop/products/Dawlance-20L-Microwave-Oven-DW-295-Resize-1.jpg?v=1695073239&width=400"
     }
   ];
 

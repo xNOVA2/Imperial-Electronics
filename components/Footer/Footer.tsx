@@ -67,7 +67,7 @@ export default function Footer() {
           <span className="ml-4  font-bold font-sans text-xl">Imperial Electronic</span>
         </div>
         <div className="mt-4 md:mt-0">
-          <p className="text-sm font-medium text-gray-500">© 2023 Imperial Electronic. All rights reserved. || Made by Ali Osaid</p>
+          <p className="text-sm font-medium text-gray-500">© 2023 Imperial Electronic. All rights reserved. || Developed  by <Link href={'https://portfolio-dpr4.vercel.app/'}>Ali Osaid</Link></p>
         </div>
       </div>
     </footer>

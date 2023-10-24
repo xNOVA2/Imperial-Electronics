@@ -18,7 +18,7 @@ const products = [
   {
     id: 3,
     title: 'LED',
-    image: 'https://modernelectronics.pk/wp-content/uploads/2021/10/W020191213643389102580_350-1-4.png',
+    image: 'https://modernelectronics.pk/cdn/shop/files/W020220427548992009362_350.png?v=1696927690&width=350',
     link:"/Products/LED"
   },
   {
