@@ -57,7 +57,7 @@ export default async function page({ params, searchParams }: { params: { Categor
 
 
 
- const CompanyUniqueName =  [...new Set(data.data.map((obj: FetchProductsType) => obj.CompanyName))];
+  const CompanyUniqueName =  [...new Set(data.data.map((obj: FetchProductsType) => obj.CompanyName))];
   const SeriesUniqueName = [...new Set(data.data.map((obj: FetchProductsType) => obj.Series))];
 
  
